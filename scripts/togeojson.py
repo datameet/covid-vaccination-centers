@@ -1,7 +1,7 @@
 import json
 import csv
 
-input = csv.DictReader(open('data/raw.csv', 'r'))
+input = csv.DictReader(open('../data/raw.csv', 'r'))
 fc = {
   'type': 'FeatureCollection',
   'features': []
@@ -44,4 +44,5 @@ for row in input:
 
   fc['features'].append(feature)
 
-print(json.dumps(fc))
+with open("../data/vaccination-centers.geojson", 'w') as outfile:
+    json.dump(fc, outfile)
